@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOAADDDINGDINGIDINGINDG</title>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0); /* Pitch black background */
+            color: rgb(0, 255, 255); /* Cyan text color */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'DefinitelyPixel', sans-serif; /* Use the pixelated font */
+        }
+
+        @font-face {
+            font-family: 'DefinitelyPixel';
+            src: url('path/to/definitely_pixel_font.ttf'); /* Replace with the path to your font file */
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .fun-facts {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="loading-text" id="loading-text">Loading...</div>
+        <div class="fun-facts" id="fun-facts">
+            Loading fun facts...
+        </div>
+    </div>
+
+    <script>
+        const loadingText = document.getElementById('loading-text');
+        const funFacts = document.getElementById('fun-facts');
+        const animationDelay = 1000; // Delay in milliseconds between loading text animation frames
+        const funFactsDisplayTime = 10000; // Display each fun fact for 10 seconds
+        const loadingScreenTime = 40000; // Redirect after 30 seconds
+
+        // Function to update the loading text animation
+        function updateLoadingText() {
+            const text = 'Loading';
+            const dots = ['...', '..', '.', '..'];
+
+            let index = 0;
+
+            setInterval(function() {
+                loadingText.textContent = text + dots[index];
+                index = (index + 1) % dots.length;
+            }, animationDelay);
+        }
+
+        // Function to rotate and display fun facts
+        function rotateFunFacts() {
+            const facts = [
+                "Did you know Buddy Valastro is a proud New Jersey resident? (He supports the Newer New Jersey locals in the great strike against the ducks)",
+                "people don't know what it's like to be the man behind the slaughter.",
+                "I don't know what I was thinking, leaving my son behind.. Now I suffer the curse and now I am blind... DNUDNUNDUDUNDUNDUNDU"
+            ];
+
+            let index = 0;
+
+            setInterval(function() {
+                funFacts.textContent = facts[index];
+                index = (index + 1) % facts.length;
+            }, funFactsDisplayTime);
+        }
+
+        // Start the loading text animation and fun facts rotation
+        updateLoadingText();
+        rotateFunFacts();
+
+        // Wait for 30 seconds (30000 milliseconds) and then redirect
+        setTimeout(function() {
+            window.location.href = 'https://totallynotasuspicioussite.nl/waitwhat.html'; // Replace with the URL you want to redirect to
+        }, loadingScreenTime);
+    </script>
+</body>
+</html>
