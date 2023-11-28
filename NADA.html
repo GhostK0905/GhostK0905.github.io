@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Text Effect</title>
+    <style>
+        body {
+            background-color: black; /* Black background */
+            color: hotpink; /* Pink text color */
+            font-family: 'Courier New', monospace; /* Use 'Courier New' font */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align text to the left side */
+            justify-content: flex-start; /* Align text to the top */
+            height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add some padding */
+        }
+    </style>
+</head>
+<body>
+    <div id="typing-text"></div>
+
+    <script>
+        const textLines = [
+            "Amidst the fog, I could make out my lowly shack across the stream, engulfed and overtaken by the old wrinkly vines and weeds flourishing.",
+            "I had been searching for my emergency compartment system for the past two months as I failed to mark it on any of my maps.",
+            "I enter alone and hear each floorboard creak and whine as I set the water to boil...",
+            "anyone could use some coffee at this time.",
+            "I stare out the window hearing the bubbling set in after every minute and watch another figure roll in from the fog. It’d be Basket but the guy didn’t carry anything besides his “fine-crafted” wooden schtick and shield, he was speeding up and I knew this dude did not bring Cees carrot stew.",
+            "He would’ve been more careful.",
+            "A kick to the door and he barges into the shack, uninvited, like a boar ravaging for berries and food in the wild, and acting like he owns the place.",
+            "Goddamnit dude!",
+            "He turns at me in confusion catching his breath",
+            "Ooh the stew...right. Hm..",
+            "He pauses for a moment and does a quick twirl",
+            "Well ya see uh Cee’s comin’ in a bit,",
+            "I think he fell into the bog..",
+            "I sprint out without scoping the area, “I will have that damn stew.”",
+            "I jump over the stream and into the opposite direction I came from, there I can see him struggling with a massive pot twice his size, he’s teleporting all over the place and eventually just stops on top of a tree and sits there. Pot in hand.",
+            "Lower it! I’m starving!!",
+            "No.",
+            "Pretty pleaaaEEEESSSEEEE?!?!?",
+            "No. Nuh uh.",
+            "Basket rushes over.",
+            "Why not? We can help",
+            "AAA! A. A. A. NO! Hush. ",
+            "You could’ve helped earlier you selfish bastard. Only if YOU didn’t run ahead and push me into that muddy pit. Besides, I need to complete my stew, it’s. not. READY!",
+            "At this point I’m simply turning back because who wants to deal with Cee? I mean it’d be “rude” to walk away but he doesn’t want help, right?",
+            "Making my way over yonder, last call.",
+            "Fine",
+            "He begins to lower the pot and my eyes light up, a meal like this would highly benefit us on our way to the base. There's been a massive shortage of wild animals, assuming most are hibernating or migrating due to the cold rolling in. As much as I’m tempted to dip my finger in it, I know Cee would start thundering and cursing like a sailor whenever he doesn’t have something up to his liking, if he wants the stew “perfected” it’ll be up to him but we’ll have to eat it eventually, we can’t just starve out here in the midst of nowhere.",
+            "I invited them into the shack and began to scramble for resources and any helpful knick-knacks I could carry with me. Sometimes, I ponder how the world would be if only you could control the lands around you, what if you could just snap anything into existence, would be easier than having to fight and bargain with random tradesmen and scams.",
+            "Eesh...",
+            "The Grove Fair.",
+            "Not looking forward to THAT. The shack doesn’t have much to offer, a sack of poisonous potatoes, rusted training swords.. We’ll set up here until day rolls in, night’s a pain to deal with as much as I want to catch faes and fireflies.",
+            "The sun rolls out and I awake to the soft touch of the first sun's ray on my palm, jumping up and off the floor mat. I decide to get a headstart and rush off with the map, slamming the door, and waking the two up. Quickly gliding past bushes and trees, I jump and skip over rocks. You could hear distant yelling and shouting, whispers in the distance. Sprinting past every obstacle as if I were a swift salmon going upstream, the cool breeze touching my face. Those two begin to catch up and Cee appears in front of me, snatching the map, and then-",
+            "*snap*",
+            "that idiot’s jumping tree to tree taunting us. We chase after him until our legs feel like spaghetti.",
+            "I held on so tight to those glorious memories for such a long time. Through the bashing battles that have scared my thoughts and scrambled them through the grassy plains. The river can sweep you away though it looks calm. Below the surface will be spikes that’ll thrash your skin.",
+            "You can hear soldiers weep and others roar like proudful lions as they charge the enemy with their battle axes. It is polluted with a thick substance, the air, much like a cigarette that clogs my lungs and blocks my view. Cannons and shots are fired and they echo across these trenches I lie in, everyone being in a state of shock or experiencing a rush of adrenaline. Bodies dropping left and right. There’s so many.. I can’t help but stare at the one in front of my lap with his torso missing. Before I knew it, a hand reached out from above and snatched me by the hair.",
+            "Well.. Saturday noon would’ve fit my schedule better, don’t ya think? It’s not like I’ll get out with my head on, you’re all wrong. Tapping the desk impatiently, I continue. I’ll be taking questions now. The door? You’re more interested in THAT door? Well isn’t that a bit much. Clearly he’s been exiled, assuming he already told you that. In there be a kingdom heavily guarded with wannabees and obnoxiously mirrored individuals. They wander round the labyrinth, which is what you’ll find past the doors. Think of this place as his containment. I mean.. It is stupid to contain someone in a plane below but it’s not like they take notice of...that. The monitor prints out a response. You want specifics? Well, go ahead. I’m slipped another receipt. Ack.",
+            "That labyrinth is like traversing the ________ desert! You’re lost, blinded, you don’t know where you are once you’re in there unless you know a route or catch a map from one of the travelers. Why of course there are, do you think it was specifically made for him? There’s roughly a couple thousand criminals within the Labyrinth, most imprisoned for attempting to assassinate the queen, being enemy soldiers, or just beings that are influenced by the PIT. I await a response…"
+        ];
+
+        const textElement = document.getElementById('typing-text');
+        let lineIndex = 0;
+        let charIndex = 0;
+
+        function typeText() {
+            if (lineIndex < textLines.length) {
+                if (charIndex < textLines[lineIndex].length) {
+                    textElement.innerHTML += textLines[lineIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, 50); 
+                } else {
+                    textElement.innerHTML += '<br><br>';
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(typeText, 1000);
+                }
+            }
+        }
+
+        typeText();
+    </script>
+</body>
+</html>
 
